@@ -1,11 +1,13 @@
 package Chapter3.optional;
 
+import java.util.Optional;
+
 public class Camp {
 
     private Student student;
 
-    public Student getStudent() {
-        return student;
+    public Optional<Student> getStudent() {
+        return Optional.ofNullable(student);
     }
 
     public void setStudent(Student student) {

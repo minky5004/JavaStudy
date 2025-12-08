@@ -1,29 +1,26 @@
 package Chapter3.optional;
 
+import java.util.Optional;
+
 public class Main {
 
     public static void main(String[] args) {
 
         Camp camp = new Camp();
-        Student student = camp.getStudent();
         Student steve = new Student("Steve");
         camp.setStudent(steve);
 
-        System.out.println("student = " + student);
+        Optional<Student> studentOptional =camp.getStudent();
+        boolean flag = studentOptional.isPresent();
 
-        // 직접적인 null 처리 방법
-        String studentName;
-        if (student != null) {
-            studentName = student.getName();
+        if(flag) {
+            Student student = studentOptional.get();
+            String studentName = student.getName();
+            System.out.println("studentName = " + studentName);
         }
         else {
-            System.out.println("등록된 학생이 아닙니다.");
+            System.out.println("학생 데이터가 없음");
         }
-
-        // 2. NullPointerException 존재하지 않는것을 get을 호출해서 예외 발생
-//        String studentName = student.getName();
-//        System.out.println("studentName = " + studentName);
-
 
     }
 }
